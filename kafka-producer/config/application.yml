@@ -1,0 +1,15 @@
+service:
+  name: Kafka Producer
+
+server:
+  port: 8170
+
+kafka:
+  bootstrapAddress: localhost:9092
+  topic:
+    message:
+      topicName: messageTopic
+      partition: 3
+    log:
+      topicName: logTopic
+      partition: 2

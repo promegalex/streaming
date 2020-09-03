@@ -1,0 +1,23 @@
+service:
+  name: Kafka Consumer
+
+server:
+  port: 8180
+
+kafka:
+  bootstrapAddress: localhost:9092
+  topic:
+    message:
+      topicName: messageTopic
+      groupName: MESSAGE
+      partition: 3
+      replication: 1
+      autoCommit: true
+      autoCommitIntervalConfigMs: 1000
+    log:
+      topicName: logTopic
+      groupName: LOG
+      partition: 2
+      replication: 1
+      autoCommit: true
+      autoCommitIntervalConfigMs: 1000

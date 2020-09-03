@@ -1,0 +1,5 @@
+rootProject.name = 'streaming'
+include 'kafka-producer'
+include 'kafka-consumer'
+include 'core'
+

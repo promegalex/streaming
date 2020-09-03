@@ -1,0 +1,26 @@
+dependencies {
+    implementation ('org.springframework.boot:spring-boot-starter-web'){
+        exclude(module: 'spring-boot-starter-tomcat')
+    }
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.9.9.3'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-undertow', version: '2.3.3.RELEASE'
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+jar {
+    group = project.group
+    version = project.version
+    enabled = true
+    manifest {
+         attributes 'Main-Class': 'com.promegalex.streaming.kafka.producer.KafkaProducerApplication'
+        attributes "Class-Path": (configurations.runtime.files + jar.outputs.files)*.name.join(" ")
+    }
+}
+
+bootJar {
+     manifest {
+        attributes 'Start-Class': 'com.promegalex.streaming.kafka.producer.KafkaProducerApplication'
+    }
+}

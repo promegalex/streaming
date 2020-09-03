@@ -1,0 +1,27 @@
+dependencies {
+    implementation ('org.springframework.boot:spring-boot-starter-web'){
+        exclude(module: 'spring-boot-starter-tomcat')
+    }
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation group: 'io.springfox', name: 'springfox-swagger2', version: '2.9.2'
+    implementation group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.0.2'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-undertow', version: '2.3.3.RELEASE'
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+jar {
+    group = project.group
+    version = project.version
+    enabled = true
+    manifest {
+        attributes 'Main-Class': 'com.promegalex.streaming.core.CoreApplication'
+        attributes "Class-Path": (configurations.runtime.files + jar.outputs.files)*.name.join(" ")
+    }
+}
+
+bootJar {
+    manifest {
+        attributes 'Start-Class': 'com.promegalex.streaming.core.CoreApplication'
+    }
+}
